@@ -1,4 +1,5 @@
-let url = "https://japceibal.github.io/emercado-api/cats_products/101.json"
+ID = localStorage.getItem("catID")
+let url = `https://japceibal.github.io/emercado-api/cats_products/${ID}.json`
 
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(url).then(function (resultObj) {
