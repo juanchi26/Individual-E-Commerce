@@ -39,3 +39,23 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+  let mail= localStorage.getItem("email")
+  document.getElementById("navbarNav").innerHTML = `<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav w-100 justify-content-between">
+    <li class="nav-item">
+      <a class="nav-link" href="mercado.html">Inicio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="categories.html">Categorías</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="sell.html">Vender</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">${mail}</a>
+    </li>
+  </ul>
+</div>`
+})

@@ -4,10 +4,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(url).then(function (resultObj) {
         if (resultObj.status === "ok") {
             datos = resultObj.data
-            let contenido = "";
-            for (let articulo of datos.products) {
+            ListaAutos();
+        }
 
-                contenido += `
+    })
+})
+
+
+function ListaAutos() {
+    let contenido = "";
+    for (let articulo of datos.products) {
+
+        contenido += `
                 <div onclick="setCatID(${datos.catID})" class="list-group-item list-group-item-action cursor-active">
                     <div class="row">
                         <div class="col-3">
@@ -23,10 +31,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     </div>
                 </div>
                 `
-            }
+    }
 
-            document.getElementsByClassName("container")[2].innerHTML = contenido;
-        }
+    document.getElementsByClassName("container")[2].innerHTML = contenido;
+}
 
-    })
-})
+// recorre un array y los dibuja con los parametros seleccionados
