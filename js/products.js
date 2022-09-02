@@ -55,6 +55,33 @@ document.addEventListener("DOMContentLoaded", function (e) {
         ListaArticulos();
     })
 
+
+    
+    document.getElementById("sortAsc").addEventListener(`click`, function () {                                        //ordena de forma ascendente por precio
+
+        datos.products.sort(function (a, b) {
+            return a.cost - b.cost
+        })
+        ListaArticulos()
+    })
+
+
+    document.getElementById("sortDesc").addEventListener(`click`, function () {                                        // ordena de forma descendente por precio
+
+        datos.products.sort(function (a, b) {
+            return b.cost - a.cost
+        })
+        ListaArticulos()
+    })
+
+    document.getElementById("sortBySold").addEventListener(`click`, function () {                                     // ordena del mas vendido al menos vendido
+
+        datos.products.sort(function (a, b) {
+            return b.soldCount - a.soldCount
+        })
+        ListaArticulos()
+    })
+
 })
 
 
