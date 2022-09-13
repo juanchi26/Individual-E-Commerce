@@ -1,4 +1,4 @@
-ID = localStorage.getItem("algo")
+ID = localStorage.getItem("idProd")
 
 url = `https://japceibal.github.io/emercado-api/products/${ID}.json`
 
