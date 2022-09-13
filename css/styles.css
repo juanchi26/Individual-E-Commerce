@@ -196,3 +196,7 @@ h1 {
 #articulos {
   text-align: center;
 }
+
+.row #prodImag{
+  margin-left: 20px;
+}

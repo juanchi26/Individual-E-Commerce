@@ -95,7 +95,7 @@ function ListaArticulos() {
 
             if (buscar == undefined || buscar == "" || articulo.name.toLowerCase().includes(buscar) || articulo.description.toLowerCase().includes(buscar)) {   // filtra por nombre o descripcion tipeados
                 contenido += `
-                <div onclick="setCatID(${datos.catID})" class="list-group-item list-group-item-action cursor-active">
+                <div onclick="redirect(${articulo.id})" class="list-group-item list-group-item-action cursor-active">
                     <div class="row">
                         <div class="col-3">
                             <img src="${articulo.image}" alt="${articulo.description}" class="img-thumbnail">
@@ -122,3 +122,8 @@ function ListaArticulos() {
 producto = () => document.getElementById(`articulos`).innerHTML = `Verás aquí todos los productos de la categoría <strong>${datos.catName}</strong>`
 
 // agrega en el parrafo el nombre de la categoria
+
+function redirect(id) {                                                     //guarda el id del producto y redirige
+    localStorage.setItem("idProd", id);
+    window.location = "product-info.html"
+}
