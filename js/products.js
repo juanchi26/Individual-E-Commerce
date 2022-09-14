@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     })
 
 
-    
     document.getElementById("sortAsc").addEventListener(`click`, function () {                                        //ordena de forma ascendente por precio
 
         datos.products.sort(function (a, b) {
@@ -123,7 +122,8 @@ producto = () => document.getElementById(`articulos`).innerHTML = `Verás aquí 
 
 // agrega en el parrafo el nombre de la categoria
 
+
 function redirect(id) {                                                     //guarda el id del producto y redirige
-    localStorage.setItem("idProd", id);
+    localStorage.setItem("prodID", id);
     window.location = "product-info.html"
 }

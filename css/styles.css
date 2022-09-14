@@ -193,15 +193,57 @@ h1 {
   text-align: center;
   margin-top: 10px;
 }
+
 #articulos {
   text-align: center;
 }
 
-.row #prodImag{
+.row #prodImag {
   margin-left: 20px;
   transition: all 300ms;
 }
 
-.row #prodImag:hover{
+.row #prodImag:hover {
   transform: scale(1.15);
+}
+
+.list-group {
+  max-width: 1200px;
+  margin: 1rem 0%;
+}
+
+#comments h3 {
+  margin-left: auto;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+#addComment {
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#agregarcomment {
+  /* text area */
+  width: 30em;
+  height: 10rem;
+}
+
+
+.form-select {
+  width: 150px;
+  margin-left: 33%;
+}
+
+#enviarFormulario {
+  /* boton del formulario */
+  margin-left: 39%;
+  margin-top: 1rem;
+}
+
+#nombreProd {
+  text-align: left;
+  margin-top: 30px;
+  margin-bottom: auto;
 }
