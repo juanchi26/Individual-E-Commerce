@@ -12,7 +12,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
             mostrardatos();
             mostrarImagenes()
         }
-        fetch(urlcomment)                                                                       //peticion comentarios
+        fetch(urlcomment)                                                               //peticion comentarios
             .then(res => res.json())
             .then(data => {
                 datos2 = data
@@ -67,7 +67,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
 
 
-    function comentarios() {                                                                                        //recorre el array de comentarios y los muestra
+    function comentarios() {                                                                     //recorre el array de comentarios y los muestra
         comment = ``
 
         for (i = 0; i < datos2.length; i++) {
@@ -117,7 +117,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
         `
         
-        document.getElementById("enviarFormulario").addEventListener("click", function(){                                           // cuando hace click agrega un comentario
+        document.getElementById("enviarFormulario").addEventListener("click", function(){                                   // cuando hace click agrega un comentario
 
                 let comentario = document.getElementById("agregarcomment").value
                 let user = localStorage.getItem("email")
@@ -128,7 +128,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
                 let hora = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
                 let fechaYHora = fecha + ' ' + hora;
                 
-                if(!comentario ==``) {                                                                                      // si el comentario no esta vacio lo agrega
+                if(!comentario ==``) {                                                                            // si el comentario no esta vacio lo agrega
 
                 document.getElementById("comentarios").innerHTML +=
 
@@ -142,7 +142,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
             
                     </div> 
         `     
-        }else{                                                                                                          // si el comentario esta vacio salta una alerta
+        }else{                                                                                  // si el comentario esta vacio salta una alerta
             alert(`debes escribir un comentario`)
         } 
         
