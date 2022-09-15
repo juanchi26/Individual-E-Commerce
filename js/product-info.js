@@ -44,8 +44,9 @@ document.addEventListener(`DOMContentLoaded`, function () {
                  <p>${datos1.soldCount} </p>
             <p><strong>Imágenes ilustrativas</strong></p>
         </div>
-        <div class="row" id="imagenes"></div>`
-
+        <div class="gallery">
+            <div class="row" id="imagenes"></div>
+        </div>`
     }
 
 
@@ -56,7 +57,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
         for (i = 0; i < datos1.images.length; i++) {
 
             img += `
-            <img class="card col img-thumbnail" id="prodImag" src="${datos1.images[i]}"> 
+            <img class="card col img-thumbnail gallery-item" id="prodImag" src="${datos1.images[i]}"> 
               
             `
         }
