@@ -42,6 +42,11 @@ let getJSONData = function(url){
 
 document.addEventListener("DOMContentLoaded", function(){
   let mail= localStorage.getItem("email")
+  localStorage.setItem("sesion", `Iniciar Sesion`)
+  let getsesion = localStorage.getItem("sesion")
+      
+  if(mail){
+
   document.getElementById("navbarNav").innerHTML = `<div class="collapse navbar-collapse" id="navbarNav">
   <ul class="navbar-nav w-100 justify-content-between">
     <li class="nav-item">
@@ -53,9 +58,29 @@ document.addEventListener("DOMContentLoaded", function(){
     <li class="nav-item">
       <a class="nav-link" href="sell.html">Vender</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" id="mail">
       <a class="nav-link">${mail}</a>
     </li>
   </ul>
 </div>`
+      }else{
+  
+      document.getElementById("navbarNav").innerHTML = `<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav w-100 justify-content-between">
+    <li class="nav-item">
+      <a class="nav-link" href="mercado.html">Inicio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="categories.html">Categorías</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="sell.html">Vender</a>
+    </li>
+    <li class="nav-item" id="mail">
+      <a href="index.html" class="nav-link">${getsesion}</a>
+    </li>
+  </ul>
+</div>`
+      }
+ 
 })
