@@ -200,6 +200,7 @@ h1 {
 
 .row #prodImag {
   margin-right: 40px;
+  margin-top: 10px;
   transition: all 300ms;
   cursor: pointer;
 }
