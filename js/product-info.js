@@ -73,7 +73,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
         for (i = 0; i < datos2.length; i++) {
             comment += `
         
-        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+        <a class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
             <div>
               <h6 class="mb-0"><strong>${datos2[i].user}</strong></h6>
               <div>${score(datos2[i].score)}</div>
@@ -132,7 +132,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
                 document.getElementById("comentarios").innerHTML +=
 
                 `
-                     <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                     <a class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
                     <div>
                         <h6 class="mb-0"><strong>${user}</strong></h6>
                          <div>${score(puntuacion)}</div>
