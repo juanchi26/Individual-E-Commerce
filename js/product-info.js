@@ -105,6 +105,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
                 <label for="agregarcomment">Tu opinión:</label>
                 <textarea class="form-control" id="agregarcomment" rows="3"></textarea>
             </div>
+            <label for="form-select">Tu puntuación.</label>
             <select class="form-select">
                         <option value="1">1</option>
                         <option value="2">2</option>
