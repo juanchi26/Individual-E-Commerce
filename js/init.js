@@ -72,6 +72,18 @@ document.addEventListener("DOMContentLoaded", function () {
     </li>
   </ul>
 </div>`
+
+    let cerrarSesion = document.getElementById("cierreSesion")
+
+    cerrarSesion.addEventListener("click", function () {
+
+
+      localStorage.removeItem("email")
+      location.reload()
+
+
+    })
+
   } else {
 
     document.getElementById("navbarNav").innerHTML = `<div class="collapse navbar-collapse" id="navbarNav">
@@ -91,17 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
   </ul>
 </div>`
   }
-
-  let cerrarSesion = document.getElementById("cierreSesion")
-
-  cerrarSesion.addEventListener("click", function () {
-
-
-    localStorage.removeItem("email")
-    location.reload()
-
-
-  })
 
 })
 
