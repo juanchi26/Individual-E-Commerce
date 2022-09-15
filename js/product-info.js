@@ -23,7 +23,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
     })
         .catch(error => console.log(error))                                                  // captura el error y lo muestra en la consola
 
-    
+
 
 
 
@@ -133,6 +133,16 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
 
     }
+
+    document.addEventListener("click", function (e) {                         // modal de imagen
+        if (e.target.classList.contains("gallery-item")) {
+            const src = e.target.getAttribute("src");
+            document.querySelector(".modal-img").src = src;
+            const myModal = new bootstrap.Modal(document.getElementById('gallery-modal'))
+            myModal.show();
+        }
+    })
+
 
 
 })
