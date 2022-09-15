@@ -45,7 +45,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
             <p><strong>Imágenes ilustrativas</strong></p>
         </div>
         <div class="gallery">
-            <div class="row" id="imagenes"></div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5" id="imagenes"></div>
         </div>`
     }
 
