@@ -3,6 +3,8 @@ let pass = document.getElementById("pass")
 let boton = document.getElementById("boton")
 
 
+
+
 boton.addEventListener(`click`, function () {
     let expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
     let correo = expReg.test(email.value);
@@ -11,6 +13,9 @@ boton.addEventListener(`click`, function () {
         window.location.href = "mercado.html";
     }
     else {
-        alert("Los campos no pueden estar vacios");
+        document.getElementById("alerta").innerHTML = `
+        <div class="alert alert-danger d-flex justify-content-around" role="alert">
+        Datos ingresados incorrectos o vacios
+      </div>`;
     }
 })
