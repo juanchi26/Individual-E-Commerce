@@ -124,7 +124,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
                 let puntuacion = document.getElementsByClassName("form-select")[0].value
 
                 let today = new Date()
-                let fecha = today.getDate() + '-' + ( today.getMonth() + 1 ) + '-' + today.getFullYear();
+                let fecha = today.getFullYear() + '-' + ( today.getMonth() + 1 ) + '-' + today.getDate();
                 let hora = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
                 let fechaYHora = fecha + ' ' + hora;
                 
