@@ -253,3 +253,7 @@ h1 {
 #gallery-modal .modal-img{
   width: 100%;
 }
+
+#cierreSesion, #mail {
+  cursor: pointer;
+}
