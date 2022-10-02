@@ -12,7 +12,8 @@ document.addEventListener(`DOMContentLoaded`, function () {
         if (resultObj.status === "ok") {
             datos1 = resultObj.data
             mostrardatos();
-            mostrarImagenes()
+            mostrarImagenes();
+            relacionados ();
         }
         fetch(urlcomment)                                                               //peticion comentarios
             .then(res => res.json())
@@ -191,6 +192,21 @@ document.addEventListener(`DOMContentLoaded`, function () {
         }
     })
 
+    function relacionados () {                                    // recomendaciones  de productos relacionados
+        recomendados = ``
+
+        for(let i of datos1.relatedProducts){                                                     
+            recomendados += `
+            <div onclick="redirect(${i.id})" class="card col" id="recIMG" style="width: 14rem;">
+                <img class="card-img-top" src="${i.image}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-center">${i.name}</h5>
+            </div>
+            </div>`
+
+        }
+        document.getElementById("recomendacion1").innerHTML = recomendados
+    }
 
 
 })

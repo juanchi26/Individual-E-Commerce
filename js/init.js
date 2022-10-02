@@ -45,64 +45,71 @@ let getJSONData = function (url) {
 
 document.addEventListener("DOMContentLoaded", function () {
   let mail = localStorage.getItem("email")
-  localStorage.setItem("sesion", `Iniciar Sesion`)
-  let getsesion = localStorage.getItem("sesion")
 
+  if (mail) {                                                           //si hay un mail en el local storage se despliega este Navbar
 
+    document.getElementById("navbarNav").innerHTML = `
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="mercado.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li> 
+          <!-- Inicio DropdownMenu -->
+        <div class="dropdown">
+           <button class="btn btn-dark dropdown-toggle" type="button" id="NavbarNav" 
+                 data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                 ${mail}
+           </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+               <li><a class="dropdown-item" href="cart.html"> Mi Carrito</a></li>
+               <li><a class="dropdown-item" href="my-profile.html" > Mi Perfil</a></li>
+               <li><a class="dropdown-item" id="cierreSesion"> Cerrar Sesión</a></li>
+          </ul>
+        </div>
+        <!-- Fin DropdownMenu -->
+    </div>`
 
+let cerrarSesion = document.getElementById("cierreSesion")
 
-  if (mail) {
-
-    document.getElementById("navbarNav").innerHTML = `<div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav w-100 justify-content-between">
-    <li class="nav-item">
-      <a class="nav-link" href="mercado.html">Inicio</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="categories.html">Categorías</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="sell.html">Vender</a>
-    </li>
-    <li class="nav-item" id="mail">
-      <a class="nav-link">${mail}</a>
-    </li>
-    <li class="nav-item">
-      <a id="cierreSesion" class="nav-link">Cerrar sesion</a>
-    </li>
-  </ul>
-</div>`
-
-    let cerrarSesion = document.getElementById("cierreSesion")
-
-    cerrarSesion.addEventListener("click", function () {
-
-
-      localStorage.removeItem("email")
-      location.reload()
-
-
-    })
-
-  } else {
-
-    document.getElementById("navbarNav").innerHTML = `<div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav w-100 justify-content-between">
-    <li class="nav-item">
-      <a class="nav-link" href="mercado.html">Inicio</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="categories.html">Categorías</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="sell.html">Vender</a>
-    </li>
-    <li class="nav-item" id="mail">
-      <a href="index.html" class="nav-link">${getsesion}</a>
-    </li>
-  </ul>
-</div>`
-  }
+cerrarSesion.addEventListener("click", function () {
+  localStorage.removeItem("email")
+  location.reload()
 
 })
+
+  } else {                                                          //sino este otro
+
+    document.getElementById("navbarNav").innerHTML = `
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100 justify-content-between">
+                <li class="nav-item">
+                  <a class="nav-link" href="mercado.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="categories.html">Categorías</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="sell.html">Vender</a>
+                </li>
+                <li class="nav-item" id="mail">
+                  <a href="index.html" class="nav-link">Iniciar Sesión</a>
+                </li>
+            </ul>
+          </div>`
+  }
+
+  
+
+})
+
+function redirect(id) {                                                     //guarda el id del producto y redirige
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html"
+}
 

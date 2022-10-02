@@ -198,14 +198,14 @@ h1 {
   text-align: center;
 }
 
-.row #prodImag {
+.row #prodImag, #recIMG  {
   margin-right: 40px;
   margin-top: 10px;
   transition: all 300ms;
   cursor: pointer;
 }
 
-.row #prodImag:hover {
+.row #prodImag:hover, #recIMG:hover {
   transform: scale(1.15);
 }
 

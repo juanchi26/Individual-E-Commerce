@@ -123,7 +123,4 @@ producto = () => document.getElementById(`articulos`).innerHTML = `Verás aquí 
 // agrega en el parrafo el nombre de la categoria
 
 
-function redirect(id) {                                                     //guarda el id del producto y redirige
-    localStorage.setItem("prodID", id);
-    window.location = "product-info.html"
-}
+
