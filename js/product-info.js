@@ -1,10 +1,10 @@
 ID = localStorage.getItem("prodID")
+IDrec = localStorage.getItem("catID")
 
 urlprod = `https://japceibal.github.io/emercado-api/products/${ID}.json`
 
 urlcomment = `https://japceibal.github.io/emercado-api/products_comments/${ID}.json`
-
-
+mail = localStorage.getItem("email")
 
 document.addEventListener(`DOMContentLoaded`, function () {
 
@@ -12,15 +12,18 @@ document.addEventListener(`DOMContentLoaded`, function () {
         if (resultObj.status === "ok") {
             datos1 = resultObj.data
             mostrardatos();
-            mostrarImagenes();
-            relacionados ();
+            mostrarImagenes()
+            relacionados ()
+            comprar()
+
         }
-        fetch(urlcomment)                                                               //peticion comentarios
+        fetch(urlcomment)                                                                       //peticion comentarios
             .then(res => res.json())
             .then(data => {
                 datos2 = data
                 comentarios();
                 controlesComentario()
+
             })
 
     })
@@ -31,10 +34,12 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
 
     function mostrardatos() {                                                       //muestra todos los datos en pantalla
-
+        if(mail){
         document.getElementById("contenedor").innerHTML = `
         <div>
             <h1 id="nombreProd"><strong>${datos1.name}</strong></h1>
+            <br>
+            <button id="addCarrito" type="button" class="btn btn-success">Comprar</button>
             <br>
             <hr>
             <p><strong>Precio</strong></p>
@@ -52,6 +57,29 @@ document.addEventListener(`DOMContentLoaded`, function () {
         </div>`
 
     }
+    else{
+        document.getElementById("contenedor").innerHTML = `
+        <div>
+            <h1 id="nombreProd"><strong>${datos1.name}</strong></h1>
+            <br>
+            <button id="addCarrito" type="button" class="btn btn-success disabled">Comprar</button>
+            <br>
+            <hr>
+            <p><strong>Precio</strong></p>
+                 <p>${datos1.currency} ${datos1.cost} </p>
+            <p><strong>Descripción</strong></p>
+                 <p>${datos1.description}</p>
+            <p><strong>Categoría</strong></p>
+                 <p>${datos1.category} </p>
+            <p><strong>Cantidad de vendidos</strong></p>
+                 <p>${datos1.soldCount} </p>
+            <p><strong>Imágenes ilustrativas</strong></p>
+        </div>
+        <div class="gallery">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-5" id="imagenes"></div>
+        </div>`
+    }
+}
 
 
 
@@ -70,7 +98,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
 
 
-    function comentarios() {                                                                     //recorre el array de comentarios y los muestra
+    function comentarios() {                                                                                        //recorre el array de comentarios y los muestra
         comment = ``
 
         for (i = 0; i < datos2.length; i++) {
@@ -120,18 +148,18 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
         `
 
-            document.getElementById("enviarFormulario").addEventListener("click", function () {                                   // cuando hace click agrega un comentario
+            document.getElementById("enviarFormulario").addEventListener("click", function () {                                           // cuando hace click agrega un comentario
 
                 let comentario = document.getElementById("agregarcomment").value
                 let user = localStorage.getItem("email")
                 let puntuacion = document.getElementsByClassName("form-select")[0].value
 
                 let today = new Date()
-                let fecha = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                let fecha = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
                 let hora = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
                 let fechaYHora = fecha + ' ' + hora;
 
-                if (!comentario == ``) {                                                                            // si el comentario no esta vacio lo agrega
+                if (!comentario == ``) {                                                                                      // si el comentario no esta vacio lo agrega
 
                     document.getElementById("comentarios").innerHTML +=
 
@@ -145,13 +173,12 @@ document.addEventListener(`DOMContentLoaded`, function () {
             
                     </div> 
         `
-                } else {                                                                                  // si el comentario esta vacio salta una alerta
+                } else {                                                                                                          // si el comentario esta vacio salta una alerta
                     alert(`debes escribir un comentario`)
                 }
 
-
-
             })
+
 
         } else {                                                              // si no  inicio sesion no podra comentar y le saldra un aviso
             document.getElementById("addComment").innerHTML = `                                 
@@ -162,6 +189,8 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
 
     }
+
+
 
 
 
@@ -182,6 +211,9 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
 
     }
+
+
+
 
     document.addEventListener("click", function (e) {                         // modal de imagen
         if (e.target.classList.contains("gallery-item")) {
@@ -208,7 +240,42 @@ document.addEventListener(`DOMContentLoaded`, function () {
         document.getElementById("recomendacion1").innerHTML = recomendados
     }
 
+    function comprar() {
+        let comprar = document.getElementById("addCarrito")
+        objeto = {}
+        objeto =  {
+                id : `${datos1.id}`,
+                name : `${datos1.name}`,
+                currency: `${datos1.currency}`,
+                unitCost: `${datos1.cost}`,
+                image: `${datos1.images[0]}`,
+                count: 1
+        }
+      
+        comprar.addEventListener("click", function(){
+             carro = localStorage.getItem("cartCompras")
+            if(carro){
+                carroParce = JSON.parse(carro)
+                if(!carro.includes(objeto.id)){
+                carroParce.push(objeto)
+                localStorage.setItem("cartCompras", JSON.stringify(carroParce))
+                window.location = "cart.html"
+                }else{
+                    showAlertDenied()
+                }
+            }else{
+                let carrito = []
+                carrito.push(objeto)
+                localStorage.setItem("cartCompras", JSON.stringify(carrito))
+                window.location = "cart.html"
+            }
+            
+        })
+    }   
+    
+   function showAlertDenied(){
+    document.getElementById("alert-denied").classList.add("show")
+    }
+
 
 })
-
-

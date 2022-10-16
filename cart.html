@@ -37,9 +37,61 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+
+      <h1>Carrito de compras</h1>
+      <h3>Artículos a comprar</h3>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="agregarArt">
+          
+        </tbody>
+      </table>
+
+      <fieldset>
+          <legend>Tipo de envio</legend>
+
+              <div>
+                <input type="radio" id="15%" value="15%" name="15%" checked>
+                <label for="15%">Premium 2 a 5 dias(15%)</label>
+              </div>
+              <div>
+                <input type="radio" id="7%" value="7%" name="15%">
+                <label for="7%">Premium 5 a 8 dias(15%)</label>
+              </div>
+              <div>
+                <input type="radio" id="5%" value="5%" name="15%">
+                <label for="5%">Premium 12 a 15 dias(5%)</label>
+              </div>
+
+      </fieldset>
+      <br>
+      <form>
+        <legend>Direccion de envio</legend>
+          <div>
+            <label for="calle">Calle</label>
+            <input type="text" name="calle" id="calle" class="form-control" style="width: 500px ;" required>
+          </div>
+          <div style="margin-top: 20px ;">
+            <label for="numero">Numero</label>
+            <input type="text" name="numero" id="numero" class="form-control" style="width: 500px ;" required>
+          </div>
+          <div style="margin-top: 20px ;">
+            <label for="esquina">Esquina</label>
+            <input type="text" name="numero" id="numero" class="form-control" style="width: 500px ;" required>
+          </div>
+          <br>
+          <button class="btn btn-primary" type="submit">Finalizar compra</button>
+
+      </form>
     </div>
   </main>
   <footer class="text-muted">
