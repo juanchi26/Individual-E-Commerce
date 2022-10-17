@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     function subtotal(e) {
-        console.log(e.target.id)
         document.getElementById(e.target.id).addEventListener("input", function () {                // aumenta solo el subtotal en el obligatorio no en el desafio
             if (e.target.id == datos.id) {
                 if (e.target.value > 0) {
