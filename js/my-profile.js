@@ -17,8 +17,9 @@ let telefono = document.getElementById("telefono");
         if (!form.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()
-        }
 
+        }
+        
         form.classList.add('was-validated')
       }, false)
     })
@@ -51,7 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   boton.addEventListener("click", () => {                       //al presionar el boton guardar se crea un objeto con todos los datos del usuario y se guarda en un array
-
+    
+    if(priNombre.value !== "" && priApellido.value !== "" && mail){       //si estan vacios no se crea el objeto
     user = {
       firstName: `${priNombre.value}`,
       secName: `${segNombre.value}`,
@@ -59,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       secLastName: `${segApellido.value}`,
       tel: `${telefono.value}`,
       mail: `${mail}`
-    }
+    }}
 
     if (usuario) {                                              //si el mail del usuario no esta registrado , se agrega al array
       users = JSON.parse(usuario)
